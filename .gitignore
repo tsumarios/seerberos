@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# VSCode
+.vscode/
+
+# Mac
+.DS_STORE
+
+# Env
+export_secrets.sh
