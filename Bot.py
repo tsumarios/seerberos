@@ -1,6 +1,5 @@
 #!usr/bin/python
 
-from config import getApi
 from quoteAPI import getQuoteOfDay
 import tweepy
 import time
@@ -41,7 +40,3 @@ class Bot:
     def print(self):
         msg = f'Hello, I\'m {self.user.screen_name}!'
         print(msg)
-
-
-bot = Bot(getApi())
-bot.print()
