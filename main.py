@@ -9,7 +9,9 @@ def main():
     bot.print()
     query = '#cybersecurity #infosec -filter:retweets'
     tweetsNo = 10
-    bot.searchHashtags(query, tweetsNo)
+    # bot.searchHashtags(query, tweetsNo)
+    user = 'zMrDevJ'
+    bot.postRetweetFromUser(user, tweetsNo)
 
 
 if __name__ == "__main__":

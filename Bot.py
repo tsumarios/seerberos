@@ -15,6 +15,22 @@ class Bot:
         self.api.update_status(update)
         print('Status updated!')
 
+    # TODO Refactoring
+    def postRetweetFromUser(self, user_screen_name, tweetsNo):
+        query = f'from:{user_screen_name} -filter:retweets'
+        tweets = tweepy.Cursor(self.api.search, query,
+                               tweet_mode='extended').items(tweetsNo)
+        for tweet in tweets:
+            try:
+                tweet.favorite()
+                tweet.retweet()
+                print(f'Retweeted a tweet from {user_screen_name}!')
+                time.sleep(5)
+
+            except tweepy.TweepError as e:
+                print(e.reason)
+                time.sleep(5)
+
     def postQuoteOfDay(self):
         quote, author = getQuoteOfDay()
         tweet = f'"{quote.lstrip()}"\n~{author}\n\n#QoD #quoteoftheday #quote #seerberos #feeds'
