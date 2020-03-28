@@ -3,10 +3,10 @@
 import tweepy
 import os
 
-consumer_key = os.environ['consumer_key']
-consumer_secret = os.environ['consumer_secret']
-key = os.environ['token_key']
-secret = os.environ['token_secret']
+consumer_key = os.environ['CONSUMER_KEY']
+consumer_secret = os.environ['CONSUMER_SECRET']
+key = os.environ['TOKEN_KEY']
+secret = os.environ['TOKEN_SECRET']
 
 
 def getApi():

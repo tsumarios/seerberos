@@ -10,8 +10,6 @@ class Bot:
     def __init__(self, api):
         self.api = api
         self.user = api.me()
-        self.hashtags = '#cybersecurity #infosec'
-        self.tweetNo = 10
 
     def postStatus(self, update):
         self.api.update_status(update)
@@ -19,20 +17,22 @@ class Bot:
 
     def postQuoteOfDay(self):
         quote, author = getQuoteOfDay()
-        tweet = f'{quote.lstrip()}\n~{author}\n\n#QoD #quoteoftheday #quote #seerberos #feeds'
+        tweet = f'"{quote.lstrip()}"\n~{author}\n\n#QoD #quoteoftheday #quote #seerberos #feeds'
         self.postStatus(tweet)
         print('Posted the QoD!')
 
     # TODO Schedule this function with a Cursor update every tot
-    def searchHashtags(self):
-        tweets = tweepy.Cursor(self.api.search,
-                               self.hashtags).items(self.tweetNo)
+    def searchHashtags(self, query, tweetsNo):
+        tweets = tweepy.Cursor(self.api.search, query,
+                               tweet_mode='extended').items(tweetsNo)
         for tweet in tweets:
             try:
-                # TODO Implement a simple account check before retweetting
-                tweet.retweet()
-                print('Retweeted a tweet!')
-                time.sleep(5)
+                # A simple account check before retweetting
+                if (tweet.user.followers_count >= 500):
+                    tweet.retweet()
+                    print('Retweeted a tweet!')
+                    time.sleep(5)
+
             except tweepy.TweepError as e:
                 print(e.reason)
                 time.sleep(5)
