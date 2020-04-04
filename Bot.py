@@ -2,6 +2,7 @@
 
 from quoteAPI import getQuoteOfDay
 import tweepy
+import random
 import time
 
 
@@ -25,11 +26,10 @@ class Bot:
                 tweet.favorite()
                 tweet.retweet()
                 print(f'Retweeted a tweet from {user_screen_name}!')
-                time.sleep(5)
-
+                time.sleep(random.randrange(30, 150))
             except tweepy.TweepError as e:
                 print(e.reason)
-                time.sleep(5)
+                time.sleep(60)
 
     def postQuoteOfDay(self):
         quote, author = getQuoteOfDay()
@@ -47,11 +47,10 @@ class Bot:
                 if (tweet.user.followers_count >= 500):
                     tweet.retweet()
                     print('Retweeted a tweet!')
-                    time.sleep(5)
-
+                    time.sleep(random.randrange(30, 150))
             except tweepy.TweepError as e:
                 print(e.reason)
-                time.sleep(5)
+                time.sleep(40)
 
     def print(self):
         msg = f'Hello, I\'m {self.user.screen_name}!'

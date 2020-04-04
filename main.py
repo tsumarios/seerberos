@@ -2,16 +2,22 @@
 
 from config import getApi
 from Bot import Bot
+import random
+import time
+
+query = '#cybersecurity #infosec -filter:retweets'
+tweetsNo = 10
 
 
 def main():
     bot = Bot(getApi())
-    bot.print()
-    query = '#cybersecurity #infosec -filter:retweets'
-    tweetsNo = 10
-    # bot.searchHashtags(query, tweetsNo)
-    user = 'zMrDevJ'
-    bot.postRetweetFromUser(user, tweetsNo)
+
+    bot.postQuoteOfDay()
+    time.sleep(random.randrange(100, 300))
+
+    while (True):
+        bot.searchHashtags(query, tweetsNo)
+        time.sleep(random.randrange(1800, 3600))
 
 
 if __name__ == "__main__":
