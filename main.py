@@ -24,7 +24,7 @@ def main():
     bot.print()
     print()
 
-    schedule.every(5).to(15).minutes.do(jobRT, bot)
+    schedule.every(15).to(30).minutes.do(jobRT, bot)
     # schedule.every().day.at("14:00").do(jobQoD, bot)
     schedule.every().day.at("16:00").do(jobRTFrom, bot)
     schedule.every().day.at("19:00").do(jobRTFrom, bot)

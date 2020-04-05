@@ -49,7 +49,7 @@ class Bot:
         for tweet in tweets:
             try:
                 # A simple account check before retweetting
-                if (tweet.user.followers_count >= 150):
+                if (tweet.user.followers_count >= 500):
                     tweet.retweet()
                     print('Retweeted a tweet!')
                     time.sleep(10)
