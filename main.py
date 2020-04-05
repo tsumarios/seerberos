@@ -1,15 +1,10 @@
 #!usr/bin/python
 
-from config import getApi
+from config import getApi, query, tweetsNo, user_screen_name
 from Bot import Bot
 import schedule
 import random
 import time
-
-query = '#cybersecurity #infosec OR #cybersecurity OR #infosec OR #pentesting OR #security OR #privacy -is:retweet -is:reply followers_count:500'
-tweetsNo = 10
-trustThershold = 500  # Min number of followers to make the bot retweet
-user_screen_name = 'zMrDevJ'
 
 
 def jobQoD(bot):
@@ -17,7 +12,7 @@ def jobQoD(bot):
 
 
 def jobRT(bot):
-    bot.searchHashtags(query, tweetsNo, trustThershold)
+    bot.searchHashtags(query, tweetsNo)
 
 
 def jobRTFrom(bot):
@@ -26,10 +21,18 @@ def jobRTFrom(bot):
 
 def main():
     bot = Bot(getApi())
+    bot.print()
+    print()
 
-    schedule.every().day.at("10:00").do(jobQoD, bot)
-    schedule.every(2).hours.do(jobRTFrom, bot)
-    schedule.every(5).to(10).minutes.do(jobRT, bot)
+    schedule.every(5).to(15).minutes.do(jobRT, bot)
+    # schedule.every().day.at("14:00").do(jobQoD, bot)
+    schedule.every().day.at("16:00").do(jobRTFrom, bot)
+    schedule.every().day.at("19:00").do(jobRTFrom, bot)
+    schedule.every().day.at("21:00").do(jobRTFrom, bot)
+    schedule.every().day.at("22:00").do(jobRTFrom, bot)
+
+    print(schedule.jobs)
+    print()
 
     while True:
         schedule.run_pending()

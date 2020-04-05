@@ -3,6 +3,10 @@
 import tweepy
 import os
 
+query = '#cybersecurity OR #infosec OR #security OR #privacy -filter:retweets -filter:replies'
+tweetsNo = 10
+user_screen_name = 'zMrDevJ'
+
 consumer_key = os.environ['CONSUMER_KEY']
 consumer_secret = os.environ['CONSUMER_SECRET']
 key = os.environ['TOKEN_KEY']
