@@ -7,7 +7,7 @@ Seerberos is currently able to update its status, retweet by seaching for given 
 Especially, in the `config.py`file you can change the following default values:
 
 ```python
-query = '#cybersecurity OR #infosec OR #security OR #privacy -filter:retweets -filter:replies'
+query = '#cybersecurity OR #infosec OR #security OR #privacy -filter:replies'
 tweetsNo = 10
 user_screen_name = 'zMrDevJ'
 ```

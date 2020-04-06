@@ -18,7 +18,7 @@ class Bot:
     # TODO Refactoring
     def postRetweetFromUser(self, user_screen_name, tweetsNo):
         print(f'Looking for tweets from {user_screen_name}')
-        query = f'from:{user_screen_name} -is:retweet -is:reply'
+        query = f'from:{user_screen_name} -filter:retweets -filter:replies'
         tweets = tweepy.Cursor(self.api.search, query,
                                tweet_mode='extended').items(tweetsNo)
         for tweet in tweets:
@@ -50,7 +50,16 @@ class Bot:
             try:
                 # A simple account check before retweetting
                 if (tweet.user.followers_count >= 500):
-                    tweet.retweet()
+                    text = tweet.full_text
+                    text_len = len(text)
+                    user = tweet.user.screen_name
+                    user_len = len(user)
+                    len_check = text_len + user_len + 17
+                    if (len_check > 280):
+                        tweet.retweet()
+                    else:
+                        update = f'RT @{user}: {text} #seerberos'
+                        self.postStatus(update)
                     print('Retweeted a tweet!')
                     time.sleep(10)
             except tweepy.TweepError as e:

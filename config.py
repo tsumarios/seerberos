@@ -3,7 +3,7 @@
 import tweepy
 import os
 
-query = '#cybersecurity OR #infosec OR #security OR #privacy -filter:retweets -filter:replies'
+query = '#cybersecurity OR #infosec OR #security OR #privacy -filter:replies'
 tweetsNo = 10
 user_screen_name = 'zMrDevJ'
 

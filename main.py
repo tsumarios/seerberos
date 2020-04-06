@@ -3,12 +3,7 @@
 from config import getApi, query, tweetsNo, user_screen_name
 from Bot import Bot
 import schedule
-import random
 import time
-
-
-def jobQoD(bot):
-    bot.postQuoteOfDay()
 
 
 def jobRT(bot):
@@ -24,12 +19,8 @@ def main():
     bot.print()
     print()
 
-    schedule.every(15).to(30).minutes.do(jobRT, bot)
-    # schedule.every().day.at("14:00").do(jobQoD, bot)
-    schedule.every().day.at("16:00").do(jobRTFrom, bot)
-    schedule.every().day.at("19:00").do(jobRTFrom, bot)
-    schedule.every().day.at("21:00").do(jobRTFrom, bot)
-    schedule.every().day.at("22:00").do(jobRTFrom, bot)
+    schedule.every(30).to(60).minutes.do(jobRT, bot)
+    schedule.every().day.at("19:19").do(jobRTFrom, bot)
 
     print(schedule.jobs)
     print()
