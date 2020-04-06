@@ -58,7 +58,7 @@ class Bot:
                     if (len_check > 280):
                         tweet.retweet()
                     else:
-                        update = f'RT @{user}: {text} #seerberos'
+                        update = f'#Seerberos RT @{user}: {text}'
                         self.postStatus(update)
                     print('Retweeted a tweet!')
                     time.sleep(10)
