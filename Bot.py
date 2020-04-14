@@ -26,7 +26,7 @@ class Bot:
                 tweet.favorite()
                 tweet.retweet()
                 print(f'Retweeted a tweet from {user_screen_name}!')
-                time.sleep(10)
+                time.sleep(180)
             except tweepy.TweepError as e:
                 print(e.reason)
                 time.sleep(10)
@@ -61,7 +61,7 @@ class Bot:
                         update = f'#Seerberos RT @{user}: {text}'
                         self.postStatus(update)
                     print('Retweeted a tweet!')
-                    time.sleep(10)
+                    time.sleep(900)
             except tweepy.TweepError as e:
                 print(e.reason)
                 time.sleep(10)
