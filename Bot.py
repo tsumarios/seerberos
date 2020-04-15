@@ -13,11 +13,11 @@ class Bot:
 
     def postStatus(self, update):
         self.api.update_status(update)
-        print('Status updated!')
+        print(f'{time.ctime()}: Status updated!')
 
     # TODO Refactoring
     def postRetweetFromUser(self, user_screen_name, tweetsNo):
-        print(f'Looking for tweets from {user_screen_name}')
+        print(f'{time.ctime()}: Looking for tweets from {user_screen_name}')
         query = f'from:{user_screen_name} -filter:retweets -filter:replies'
         tweets = tweepy.Cursor(self.api.search, query,
                                tweet_mode='extended').items(tweetsNo)
@@ -25,14 +25,16 @@ class Bot:
             try:
                 tweet.favorite()
                 tweet.retweet()
-                print(f'Retweeted a tweet from {user_screen_name}!')
+                print(
+                    f'{time.ctime()}: Retweeted a tweet from {user_screen_name}!'
+                )
                 time.sleep(180)
             except tweepy.TweepError as e:
                 print(e.reason)
                 time.sleep(10)
 
     def postQuoteOfDay(self):
-        print('Getting QoD...')
+        print(f'{time.ctime()}: Getting QoD...')
         quote, author = getQuoteOfDay()
         tweet = f'"{quote.lstrip()}"\n~{author}\n\n#QoD #quoteoftheday #quote #seerberos #feeds'
         try:
@@ -43,7 +45,7 @@ class Bot:
             pass
 
     def searchHashtags(self, query, tweetsNo):
-        print('Looking for hashtags...')
+        print(f'{time.ctime()}: Looking for hashtags...')
         tweets = tweepy.Cursor(self.api.search, query,
                                tweet_mode='extended').items(tweetsNo)
         for tweet in tweets:
@@ -60,7 +62,7 @@ class Bot:
                     else:
                         update = f'#Seerberos RT @{user}: {text}'
                         self.postStatus(update)
-                    print('Retweeted a tweet!')
+                    print(f'{time.ctime()}: Retweeted a tweet!')
                     time.sleep(900)
             except tweepy.TweepError as e:
                 print(e.reason)
