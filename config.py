@@ -5,7 +5,7 @@ import os
 
 query = '#cybersecurity OR #infosec OR #security OR #privacy -filter:retweets -filter:replies'
 tweetsNo = 10
-user_screen_name = 'zMrDevJ'
+user_screen_name = 'kerb3ros05'
 
 consumer_key = os.environ['CONSUMER_KEY']
 consumer_secret = os.environ['CONSUMER_SECRET']
