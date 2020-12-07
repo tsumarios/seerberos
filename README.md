@@ -10,7 +10,7 @@ Especially, in the `config.py`file you can change the following default values:
 ```python
 query = '#cybersecurity OR #infosec OR #security OR #privacy -filter:retweets -filter:replies'
 tweetsNo = 10
-user_screen_name = 'kerb3ros05'
+user_screen_name = 'zMrSec'
 ```
 
 Note that this project currently works with a free Twitter Developer plan and it's deployed on [PythonAnywhere](https://www.pythonanywhere.com/user/seerberos/), thus it can't post - the feature is implemented anyway - quotes of the day because of the free account limitations.
@@ -49,7 +49,7 @@ For any questions or suggetions, please feel free to contact me:
 
 - Email: marioraciti@pm.me
 - LinkedIn: linkedin.com/in/marioraciti
-- Twitter: twitter.com/kerb3ros05
+- Twitter: twitter.com/zMrSec
 
 ## Todos
 
